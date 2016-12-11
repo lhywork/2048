@@ -131,11 +131,39 @@ $(document).on('keydown',function(e){
             break;
     }
 });
-$(document).addEventListener('touchstart',function(e){
-    
+$(document).on('touchstart',function(e){
+    startX = e.touches[0].pageX;
+    startY = e.touches[0].pageY;
 });
-$(document).addEventListener('touchend',function(e){
+$(document).on('touchend',function(e){
+    var endX = e.changedTouches[0].pageX;
+    var endY = e.changedTouches[0].pageY;
 
+    var deltaX = endX - startX;
+    var deltaY = endY - startY;
+    if(Math.abs(deltaX) < 0.2*documentWidth && Math.abs(deltaY) < 0.2*documentWidth)
+        return;
+    if(Math.abs(deltaX) >= Math.abs(deltaY)){
+        if( deltaX >= 0 ){
+            if(moveRight())
+                setTimeout(generateNum,200);
+            isGameOver(board);
+        }else{
+            if(moveLeft())
+                setTimeout(generateNum,200);
+            isGameOver(board);
+        }
+    }else{
+        if( deltaY >= 0 ){
+            if(moveDown())
+                setTimeout(generateNum,200);
+            isGameOver(board);
+        }else{
+            if(moveTop())
+                setTimeout(generateNum,200);
+            isGameOver(board);
+        }
+    }
 });
 //向左移动
 function moveLeft(){
