@@ -33,6 +33,14 @@ function getNumColor(num) {
     if( num <= 4 ) return '#776e65';
     return '#fff';
 }
+function getFontSize(i,j){
+    var $numcell = $('#num_cell-'+i+'-'+j);
+    if(board[i][j] > 999){
+        $numcell.css('font-size',0.4*cellWidth).removeClass('font_set');
+    }else if(board[i][j] > 99){
+        $numcell.css('font-size',0.45*cellWidth).removeClass('font_set');
+    }
+}
 function noSpace() {
     for( var i = 0; i < 4; i++ ){
         for(var j = 0; j < 4; j++ ){

@@ -53,7 +53,7 @@ function upDataView() {
     $('.num_cell').remove();
     for( var i = 0; i < 4; i++ ){
         for( var j = 0; j < 4; j++ ){
-            $('.grid_container').append('<div class="num_cell" id="num_cell-'+i+'-'+j+'"></div>');
+            $('.grid_container').append('<div class="num_cell font_set" id="num_cell-'+i+'-'+j+'"></div>');
             var numCell = $('#num_cell-'+ i + '-' + j);
 
             if(board[i][j] == 0){
@@ -71,9 +71,11 @@ function upDataView() {
                 numCell.css('color',getNumColor(board[i][j]));
             }
             combined[i][j] = false;
+            getFontSize(i,j);
         }
     }
-    $('.num_cell').css({'font-size':0.6*cellWidth+'px','line-height':cellWidth+'px'});
+    $('.num_cell').css('line-height',cellWidth+'px');
+    $('.font_set').css('font-size',0.6*cellWidth);
     $('.score > span').text(score);
 }
 //随机生成一个位置和数字
@@ -105,23 +107,27 @@ $(document).on('keydown',function(e){
     switch(e.keyCode){
         case 37:
             e.preventDefault();
-            if(moveLeft())
-                setTimeout(generateNum,200);
+            if(moveLeft()) {
+                setTimeout(generateNum, 200);
+            }
             break;
         case 38:
             e.preventDefault();
-            if(moveTop())
-                setTimeout(generateNum,200);
+            if(moveTop()) {
+                setTimeout(generateNum, 200);
+            }
             break;
         case 39:
             e.preventDefault();
-            if(moveRight())
-                setTimeout(generateNum,200);
+            if(moveRight()) {
+                setTimeout(generateNum, 200);
+            }
             break;
         case 40:
             e.preventDefault();
-            if(moveDown())
-                setTimeout(generateNum,200);
+            if(moveDown()) {
+                setTimeout(generateNum, 200);
+            }
             break;
         default:
             break;
