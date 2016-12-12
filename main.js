@@ -24,6 +24,7 @@ function mobileDevice() {
         cellWidth = 100;
         cellSpace = 20;
     }
+    $('.head_box').css('width',gridWidth);
     $('.grid_container').css({'width':gridWidth-2*cellSpace,'height':gridWidth-2*cellSpace,'padding':cellSpace});
     $('.grid_cell').css({'width':cellWidth,'height':cellWidth});
 }

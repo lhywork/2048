@@ -1,29 +1,43 @@
+html,body,header,p,h1,div{
+    padding: 0;
+    margin: 0;
+    font-family:Helvetica,Arial,sans-serif;
+}
 header{
-    font-family:Helvetica;
     width: 100%;
-    margin: 0 auto;
     text-align: center;
 }
-header h1{
-    font-size: 40px;
+header .head_box{
+    width : 500px;
+    margin: 10px auto;
+    overflow: hidden;
+}
+header .head_box h1{
+    margin: 20px;
+    font-size: 50px;
+    color: #333;
     font-weight: bold;
+    float: left;
 }
 header .btn{
     width: 100px;
-    margin: 20px auto;
+    margin: 20px auto 0;
     padding: 10px;
     background-color: #8f7a66;
     display: block;
     color: #ffffff;
     border-radius: 10px;
     text-decoration: none;
+    float: right;
 }
 header .btn:hover{
     background-color: #9F8B77;
 }
 header .score{
-    margin: 20px auto;
+    margin: 10px;
     font-size: 25px;
+    clear: right;
+    float: right;
 }
 .grid_container{
     width: 460px;
@@ -33,7 +47,6 @@ header .score{
     background-color: #bbada0;
     border-radius: 10px;
     position: relative;
-    font-family:Helvetica;
 }
 .grid_cell{
     width: 100px;
@@ -45,6 +58,11 @@ header .score{
 .num_cell{
     border-radius: 6px;
     text-align: center;
-    font-family:Helvetica;
+    font-family: Helvetica, Arial,sans-serif;
     position: absolute;
+}
+footer{
+    margin-top: 20px;
+    color: #666;
+    text-align: center;
 }
