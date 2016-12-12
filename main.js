@@ -107,29 +107,26 @@ $(document).on('keydown',function(e){
             e.preventDefault();
             if(moveLeft())
                 setTimeout(generateNum,200);
-            isGameOver(board);
             break;
         case 38:
             e.preventDefault();
             if(moveTop())
                 setTimeout(generateNum,200);
-            isGameOver(board);
             break;
         case 39:
             e.preventDefault();
             if(moveRight())
-                setTimeout(generateNum, 200);
-            isGameOver(board);
+                setTimeout(generateNum,200);
             break;
         case 40:
             e.preventDefault();
             if(moveDown())
                 setTimeout(generateNum,200);
-            isGameOver(board);
             break;
         default:
             break;
     }
+    isGameOver(board);
 });
 $(function(){
     var startX = 0;
@@ -185,10 +182,12 @@ function moveLeft(){
                             board[i][j] = 0;
                             combined[i][k] = true;
                             showMoveAnimate(i,j,i,k);
+                            break;
                         }else if ( board[i][k] == 0 && noBlockRow(i,k,j) ){
                             board[i][k] = board[i][j];
                             board[i][j] = 0;
                             showMoveAnimate(i,j,i,k);
+                            break;
                         }
                     }
                 }
@@ -212,10 +211,12 @@ function moveRight(){
                             board[i][j] = 0;
                             combined[i][k] = true;
                             showMoveAnimate(i,j,i,k);
+                            break;
                         }else if ( board[i][k] == 0 && noBlockRow(i,j,k) ){
                             board[i][k] = board[i][j];
                             board[i][j] = 0;
                             showMoveAnimate(i,j,i,k);
+                            break;
                         }
                     }
                 }
@@ -239,10 +240,12 @@ function moveTop(){
                             board[i][j] = 0;
                             combined[k][j] = true;
                             showMoveAnimate(i,j,k,j);
+                            break;
                         }else if ( board[k][j] == 0 && noBlockCol(j,k,i) ){
                             board[k][j] = board[i][j];
                             board[i][j] = 0;
                             showMoveAnimate(i,j,k,j);
+                            break;
                         }
                     }
                 }
@@ -266,10 +269,12 @@ function moveDown(){
                             board[i][j] = 0;
                             combined[k][j] = true;
                             showMoveAnimate(i,j,k,j);
+                            break;
                         }else if ( board[k][j] == 0 && noBlockCol(j,i,k) ){
                             board[k][j] = board[i][j];
                             board[i][j] = 0;
                             showMoveAnimate(i,j,k,j);
+                            break;
                         }
                     }
                 }
