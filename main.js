@@ -131,39 +131,46 @@ $(document).on('keydown',function(e){
             break;
     }
 });
-$(document).on('touchstart',function(e){
-    startX = e.touches[0].pageX;
-    startY = e.touches[0].pageY;
-});
-$(document).on('touchend',function(e){
-    var endX = e.changedTouches[0].pageX;
-    var endY = e.changedTouches[0].pageY;
+$(function(){
+    var startX = 0;
+    var startY = 0;
+    var endX = 0;
+    var endY = 0;
+    $('.grid_container').on('touchstart',function(e){
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    }).on('touchend',function(e){
+        endX = e.changedTouches[0].clientX;
+        endY = e.changedTouches[0].clientY;
 
-    var deltaX = endX - startX;
-    var deltaY = endY - startY;
-    if(Math.abs(deltaX) < 0.2*documentWidth && Math.abs(deltaY) < 0.2*documentWidth)
-        return;
-    if(Math.abs(deltaX) >= Math.abs(deltaY)){
-        if( deltaX >= 0 ){
-            if(moveRight())
-                setTimeout(generateNum,200);
-            isGameOver(board);
+        var deltaX = endX - startX;
+        var deltaY = endY - startY;
+        if(Math.abs(deltaX) < 0.2*gridWidth && Math.abs(deltaY) < 0.2*gridWidth)
+            return;
+        if(Math.abs(deltaX) >= Math.abs(deltaY)){
+            if( deltaX >= 0 ){
+                if(moveRight())
+                    setTimeout(generateNum,200);
+                isGameOver(board);
+            }else{
+                if(moveLeft())
+                    setTimeout(generateNum,200);
+                isGameOver(board);
+            }
         }else{
-            if(moveLeft())
-                setTimeout(generateNum,200);
-            isGameOver(board);
+            if( deltaY >= 0 ){
+                if(moveDown())
+                    setTimeout(generateNum,200);
+                isGameOver(board);
+            }else{
+                if(moveTop())
+                    setTimeout(generateNum,200);
+                isGameOver(board);
+            }
         }
-    }else{
-        if( deltaY >= 0 ){
-            if(moveDown())
-                setTimeout(generateNum,200);
-            isGameOver(board);
-        }else{
-            if(moveTop())
-                setTimeout(generateNum,200);
-            isGameOver(board);
-        }
-    }
+    }).on('touchmove',function(e){
+        e.preventDefault();
+    });
 });
 //向左移动
 function moveLeft(){
